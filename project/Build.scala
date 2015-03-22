@@ -52,27 +52,6 @@ object Build extends Build {
         )
     ) ++ defaultAssemblySettings
 
- lazy val interface: Project = 
-    Project("interface", file("interface"))
-      .settings(interfaceSettings: _*)
-
-  lazy val interfaceSettings =
-    Seq(
-      name := "interface",
-      organization := "org.locationtech",
-      version := "0.1.0",
-      scalaVersion := "2.11.1",
-      scalacOptions ++= Seq(
-        "-deprecation",
-        "-unchecked",
-        "-Yinline-warnings",
-        "-language:implicitConversions",
-        "-language:reflectiveCalls",
-        "-language:postfixOps",
-        "-language:existentials",
-        "-feature")
-    ) ++ defaultAssemblySettings
-
   lazy val benchmarks: Project =
     Project("benchmarks", file("benchmarks"))
       .settings(benchmarksSettings: _*)
