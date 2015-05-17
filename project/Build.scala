@@ -16,7 +16,8 @@ object Build extends Build {
         case "META-INF\\MANIFEST.MF" => MergeStrategy.discard
         case _ => MergeStrategy.first
       }
-    }
+  },
+  resolvers += Resolver.mavenLocal
   )
 
   override lazy val settings =
@@ -26,7 +27,7 @@ object Build extends Build {
     Project("curve", file("."))
       .aggregate(core)
 
-  lazy val core: Project = 
+  lazy val core: Project =
     Project("core", file("core"))
       .settings(coreSettings: _*)
 
@@ -82,7 +83,8 @@ object Build extends Build {
         "com.google.code.caliper" % "caliper" % "1.0-SNAPSHOT" from "http://plastic-idolatry.com/jars/caliper-1.0-SNAPSHOT.jar",
         "com.google.guava" % "guava" % "r09",
         "com.google.code.java-allocation-instrumenter" % "java-allocation-instrumenter" % "2.0",
-        "com.google.code.gson" % "gson" % "1.7.1"
+        "com.google.code.gson" % "gson" % "1.7.1",
+        "com.typesafe.scala-logging" % "scala-logging-slf4j_2.11" % "2.1.2"
       ),
       // custom kludge to get caliper to see the right classpath
 
